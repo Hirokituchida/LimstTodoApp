@@ -19,10 +19,10 @@ public class TodoServiceimpl implements TodoService {
 	public List<Todo> getTodos() {
 		return mapper.findMany();
 	}
-
-//	@Override
-//	public Todo getUserOne(String id) {
-//		return mapper.findOne(id);}
-
+	
+	@Override
+	public List<Todo> getTrueTodos() {
+		return mapper.getTrueTodos();
+	}
 	
 }

@@ -26,7 +26,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item, index : ${userList}">
+					<tr th:each="item : ${todos}">
 						<td th:text="${item.id}"></td>
 						<td th:text="${item.title}"></td>
 						<td th:text="${item.timeLimit}"></td>
@@ -36,8 +36,6 @@
 		</div>
 	</div>
 	<div class="text-center">
-
-
 
 		<h2>完了リスト</h2>
 		<div>
@@ -50,7 +48,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item, index : ${userList}">
+					<tr th:each="item : ${Truetodos}">
 						<td th:text="${item.id}"></td>
 						<td th:text="${item.title}" style="text-decoration: line-through;"></td>
 						<td th:text="${item.timeLimit}"></td>

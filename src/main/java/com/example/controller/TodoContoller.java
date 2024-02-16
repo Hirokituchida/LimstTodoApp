@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +21,14 @@ public class TodoContoller {
 	@Autowired
 	private TodoService todoService;
 	
-//	@Autowired
-//	private ModelMapper modelMapper;
 
 	@GetMapping("/")
 	public String getTodo(Model model) {
-		List<Todo>todoList=todoService.getTodos();
-		List<Boolean> doneFlage = new ArrayList<>();
-		for(Todo todo : todoList) {
-            doneFlage.add(todo.isDone());
-        }
-        model.addAttribute("todos", todoList);
-        model.addAttribute("doneFlags", doneFlage);
+		List<Todo>getFalseTodos=todoService.getTodos();
+		List<Todo>getTrueTodos=todoService.getTrueTodos();
 
-		
-//		//ユーザー一覧取得
-//		List<Todo>todoList=todoService.getTodos();
-//		
-//		//Modelに登録
-//		model.addAttribute("userList",todoList);
-//		
-//		List<Todo> incompleteTodos = todoService.getIncompleteTodos();
-//        List<Todo> completedTodos = todoService.getCompletedTodos();
-//        model.addAttribute("incompleteTodos", incompleteTodos);
-//        model.addAttribute("completedTodos", completedTodos);
-//        
+        model.addAttribute("todos", getFalseTodos);
+        model.addAttribute("Truetodos", getTrueTodos);
 		return "todo/todo";
 		
 	}

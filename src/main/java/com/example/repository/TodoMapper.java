@@ -11,5 +11,5 @@ public interface TodoMapper {
 	
     public List<Todo> findMany();
     
-//    public Todo findOne(String id);
+    public List<Todo> getTrueTodos();
 }
