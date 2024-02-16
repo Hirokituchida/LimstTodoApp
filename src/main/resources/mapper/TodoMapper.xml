@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.TodoMapper">
+
+	<!-- <resultMap type="com.example.domine.model.Todo" id="user">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="Done" property="Done" />
+		<result column="timeLimit" property="timeLimit" />
+	</resultMap>
+ -->
+
+	<select id="findMany" resultType="com.example.domain.model.Todo">
+		select
+		*
+		from
+		todo_details
+	</select>
+
+	<!-- <select id="findOne" resultMap="user">   
+		select
+		*
+		from
+		id   
+		where
+		id=#{id}
+	</select>
+ -->
+</mapper>
