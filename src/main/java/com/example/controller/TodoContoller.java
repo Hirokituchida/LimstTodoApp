@@ -24,10 +24,10 @@ public class TodoContoller {
 
 	@GetMapping("/")
 	public String getTodo(Model model) {
-		List<Todo>getFalseTodos=todoService.getTodos();
+		List<Todo>getFalseTodos=todoService.getFalseTodos();
 		List<Todo>getTrueTodos=todoService.getTrueTodos();
 
-        model.addAttribute("todos", getFalseTodos);
+        model.addAttribute("Falsetodos", getFalseTodos);
         model.addAttribute("Truetodos", getTrueTodos);
 		return "todo/todo";
 		

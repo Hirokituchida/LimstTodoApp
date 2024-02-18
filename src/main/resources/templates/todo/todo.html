@@ -23,13 +23,17 @@
 						<th class="thwidth">ID</th>
 						<th class="thwidth">タイトル</th>
 						<th class="thwidth">期日</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item : ${todos}">
+					<tr th:each="item : ${Falsetodos}">
 						<td th:text="${item.id}"></td>
 						<td th:text="${item.title}"></td>
-						<td th:text="${item.timeLimit}"></td>
+						<td th:text="${#dates.format(item.timeLimit, 'yyyy-MM-dd')}"></td>
+						<td>
+							<a>詳細</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -45,18 +49,23 @@
 						<th class="thwidth">ID</th>
 						<th class="thwidth">タイトル</th>
 						<th class="thwidth">期日</th>
+						<th></th>
 					</tr>
+
 				</thead>
 				<tbody>
 					<tr th:each="item : ${Truetodos}">
 						<td th:text="${item.id}"></td>
 						<td th:text="${item.title}" style="text-decoration: line-through;"></td>
-						<td th:text="${item.timeLimit}"></td>
+						<td th:text="${#dates.format(item.timeLimit, 'yyyy-MM-dd')}"></td>
+						<td>
+							<a>詳細</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<a> 詳細 </a>
+
 	</div>
 
 	<div class="text-center">

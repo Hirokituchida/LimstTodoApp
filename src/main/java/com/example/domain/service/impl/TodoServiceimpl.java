@@ -16,8 +16,8 @@ public class TodoServiceimpl implements TodoService {
 	private TodoMapper mapper;
 
 	@Override
-	public List<Todo> getTodos() {
-		return mapper.findMany();
+	public List<Todo> getFalseTodos() {
+		return mapper.getFalseTodos();
 	}
 	
 	@Override

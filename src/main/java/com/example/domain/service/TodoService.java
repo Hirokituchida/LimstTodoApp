@@ -9,7 +9,7 @@ import com.example.domain.model.Todo;
 @Service
 public interface TodoService {
 	
-	public List<Todo> getTodos();
+	public List<Todo> getFalseTodos();
 	
 	public List<Todo> getTrueTodos();
 }

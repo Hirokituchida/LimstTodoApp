@@ -5,7 +5,7 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.repository.TodoMapper">
 
-	<select id="findMany" resultType="com.example.domain.model.Todo">
+	<select id="getFalseTodos" resultType="com.example.domain.model.Todo">
 		select
 		*
 		from

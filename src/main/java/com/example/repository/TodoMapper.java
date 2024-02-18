@@ -9,7 +9,7 @@ import com.example.domain.model.Todo;
 @Mapper
 public interface TodoMapper {
 	
-    public List<Todo> findMany();
+    public List<Todo> getFalseTodos();
     
     public List<Todo> getTrueTodos();
 }
