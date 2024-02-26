@@ -12,4 +12,6 @@ public interface TodoService {
 	public List<Todo> getFalseTodos();
 	
 	public List<Todo> getTrueTodos();
+	
+	public void getAddTodos(Todo todo);
 }

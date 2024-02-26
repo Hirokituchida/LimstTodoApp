@@ -9,9 +9,9 @@ import lombok.Data;
 @Data
 public class Todo {
 	private String id;
-    private String title;
-    private boolean Done;
-    
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date timeLimit;
+	private String title;
+	private boolean Done;
+
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private Date timeLimit;
 }

@@ -21,5 +21,15 @@
 		where
 		is_done = TRUE
 	</select>
+	
+	<insert id="getAdditionTodos">
+	   insert into todo_details(
+	   titel
+	   time_limit
+	   )
+	   values(
+	   ,#{titel}
+	   ,#{timelimit})
+	</insert>
 
 </mapper>

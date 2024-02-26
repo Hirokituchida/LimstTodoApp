@@ -12,4 +12,7 @@ public interface TodoMapper {
     public List<Todo> getFalseTodos();
     
     public List<Todo> getTrueTodos();
+    
+    public int getAdditionTodos(Todo todo);
+
 }
