@@ -13,5 +13,8 @@ public interface TodoService {
 	
 	public List<Todo> getTrueTodos();
 	
-	public void getAddTodos(Todo todo);
+//	public void getAddTodos(Todo todo);
+	
+    public Todo getTodoDetail(int id);
+
 }

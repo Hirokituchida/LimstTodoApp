@@ -13,6 +13,7 @@ public interface TodoMapper {
     
     public List<Todo> getTrueTodos();
     
-    public int getAdditionTodos(Todo todo);
-
+//    public int getAdditionTodos(Todo todo);
+    
+	public Todo getTodoDateil(int id);
 }
