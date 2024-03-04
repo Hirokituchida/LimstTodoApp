@@ -32,7 +32,7 @@
 						<td th:text="${item.title}"></td>
 						<td th:text="${#dates.format(item.timeLimit, 'yyyy-MM-dd')}"></td>
 						<td>
-							<a>詳細</a>
+							<a lass="btn btn-primary" th:href="@{'/detail/' + ${item.id}}">詳細</a>
 						</td>
 					</tr>
 				</tbody>
@@ -59,7 +59,7 @@
 						<td th:text="${item.title}" style="text-decoration: line-through;"></td>
 						<td th:text="${#dates.format(item.timeLimit, 'yyyy-MM-dd')}"></td>
 						<td>
-							<a>詳細</a>
+							<a class="btn btn-primary" th:href="@{'/detail/' + ${item.id}}">詳細</a>
 						</td>
 					</tr>
 				</tbody>
