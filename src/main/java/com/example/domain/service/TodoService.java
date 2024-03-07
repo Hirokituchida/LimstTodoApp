@@ -17,4 +17,6 @@ public interface TodoService {
 	
     public Todo getTodoDetail(int id);
 
+	public void deteleTodos(String string);
+
 }

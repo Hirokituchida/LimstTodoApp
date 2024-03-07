@@ -11,7 +11,8 @@
 </head>
 
 <body class="bg-light">
-	<!-- <form method="post" th:action="@{/}" class="form-login"> -->
+
+	<!-- <input type="hidden" th:field="{id}" /> -->
 	<div class="text-center">
 		<h1 class="tect-center">TodoList</h1>
 		<a th:href="@{/add}" class="h2">TODOの追加</a>
@@ -68,10 +69,11 @@
 
 	</div>
 
-	<div class="text-center">
-		<!-- 削除ボタン -->
-		<button class="btn btn-danger" type="submit" name="delete">
-			完了済みを削除</button>
-	</div>
-	<!--</form>-->
+	<form method="post" th:action="@{/}" class="form-detele">
+		<div class="text-center">
+			<!-- 削除ボタン -->
+			<button class="btn btn-danger" type="submit" name="delete">
+				完了済みを削除</button>
+		</div>
+	</form>
 </body>

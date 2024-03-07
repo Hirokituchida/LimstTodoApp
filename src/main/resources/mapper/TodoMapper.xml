@@ -8,12 +8,12 @@
 	<!-- マッピングの定義 -->
 	<resultMap type="com.example.domain.model.Todo" id="todo">
 		<id column="id" property="id" />
-		<result column="titel" property="titel"/>
-		<result column="timelimit" property="timelimit"/>
-		<result column="is_done" property="Done"/>
+		<result column="titel" property="titel" />
+		<result column="timelimit" property="timelimit" />
+		<result column="is_done" property="Done" />
 	</resultMap>
 
-    <!-- 登録 -->
+	<!-- 登録 -->
 	<select id="getFalseTodos"
 		resultType="com.example.domain.model.Todo">
 		select
@@ -32,8 +32,8 @@
 		where
 		is_done = TRUE
 	</select>
-	
-    <!-- 追加 -->
+
+	<!-- 追加 -->
 	<insert id="getAdditionTodos">
 		insert into todo_details(
 		titel
@@ -43,15 +43,24 @@
 		,#{titel}
 		,#{timelimit})
 	</insert>
-	
+
 	<!-- 詳細 -->
 	<select id="getTodoDateil" resultMap="todo">
-	    select
-	    *
-	    from
-	    todo_details
-	    where
-	    id = #{id}
+		select
+		*
+		from
+		todo_details
+		where
+		id = #{id}
 	</select>
+
+	<!-- 削除 -->
+	<delete id="deteleTodos">
+		delete
+		from
+		todo_details
+		where
+		is_done = true
+	</delete>
 
 </mapper>

@@ -34,4 +34,10 @@ public class TodoServiceimpl implements TodoService {
     public Todo getTodoDetail(int id) {
 		return mapper.getTodoDateil(id);
 	}
+	
+	@Override
+	public void deteleTodos(String id) {
+		mapper.deteleTodos(id);
+	}
+
 }
