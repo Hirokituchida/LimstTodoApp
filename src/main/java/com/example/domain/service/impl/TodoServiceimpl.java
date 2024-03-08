@@ -25,10 +25,10 @@ public class TodoServiceimpl implements TodoService {
 		return mapper.getTrueTodos();
 	}
 	
-//	@Override
-//	public void getAddTodos(Todo todo) {
-//		mapper.getAdditionTodos(todo);
-//	}
+	@Override
+	public void getAdditionTodos(Todo todo) {
+		mapper.getAdditionTodos(todo);
+	}
 	
 	@Override
     public Todo getTodoDetail(int id) {

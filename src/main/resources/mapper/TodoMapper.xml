@@ -36,12 +36,14 @@
 	<!-- 追加 -->
 	<insert id="getAdditionTodos">
 		insert into todo_details(
-		titel
-		time_limit
+		title
+		,is_done
+		,time_limit
 		)
 		values(
-		,#{titel}
-		,#{timelimit})
+		#{title}
+		,#{Done}
+		,#{timeLimit})
 	</insert>
 
 	<!-- 詳細 -->

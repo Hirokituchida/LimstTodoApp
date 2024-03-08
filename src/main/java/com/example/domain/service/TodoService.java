@@ -13,10 +13,10 @@ public interface TodoService {
 	
 	public List<Todo> getTrueTodos();
 	
-//	public void getAddTodos(Todo todo);
+	public void getAdditionTodos(Todo todo);
 	
     public Todo getTodoDetail(int id);
 
-	public void deteleTodos(String string);
+	public void deteleTodos(String id);
 
 }
