@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,8 @@ import com.example.domain.service.TodoService;
 import com.example.form.AddForm;
 import com.example.form.TodoDetailForm;
 
-import groovy.util.logging.Slf4j;
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequestMapping("/")
@@ -45,16 +48,26 @@ public class TodoContoller {
 	// 追加画面の表示
 	@GetMapping("/add")
 	public String getAdd(Model model, Locale locale, @ModelAttribute AddForm form) {
+		
 		return "todo/add";
 	}
 	
 	//
 	@PostMapping("/add")
-	public String postAdd(Model model, Locale locale, @ModelAttribute AddForm form) {
+	public String postAdd(Model model, Locale locale, @ModelAttribute @Validated AddForm form, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return getAdd(model, locale, form);
+		}
 		
-		Todo todo = modelMapper.map(form,Todo.class);
+		try {
+			Todo todo = modelMapper.map(form,Todo.class);
+			
+			todoService.getAdditionTodos(todo);
+		} catch (Exception e) {
+			log.error("TODO追加でエラー",e);
+		}
 		
-		todoService.getAdditionTodos(todo);
 		
 		return "redirect:/";
 	}

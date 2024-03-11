@@ -21,7 +21,8 @@
 		<dev class="text-center">
 			<div class="form-group">
 				<label for="titel">タイトル</label>
-				<input type="text" class="form-control" th:field="*{title}"/>
+				<input type="text" class="form-control" th:field="*{title}" th:errorclass="is-invalid"/>
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 			</div>
 			<!-- timeLimit -->
 			<div class="form-group">
