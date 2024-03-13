@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,6 @@ import com.example.form.AddForm;
 import com.example.form.TodoDetailForm;
 
 import lombok.extern.slf4j.Slf4j;
-
 
 @Controller
 @RequestMapping("/")
@@ -48,35 +48,45 @@ public class TodoContoller {
 	// 追加画面の表示
 	@GetMapping("/add")
 	public String getAdd(Model model, Locale locale, @ModelAttribute AddForm form) {
-		
+
 		return "todo/add";
 	}
-	
+
 	//
 	@PostMapping("/add")
-	public String postAdd(Model model, Locale locale, @ModelAttribute @Validated AddForm form, BindingResult bindingResult) {
+	public String postAdd(Model model, Locale locale, @ModelAttribute @Validated AddForm form,
+			BindingResult bindingResult) {
 
-		if (bindingResult.hasErrors()) {
-			return getAdd(model, locale, form);
-		}
-		
 		try {
-			Todo todo = modelMapper.map(form,Todo.class);
-			
+			Todo todo = modelMapper.map(form, Todo.class);
+
 			todoService.getAdditionTodos(todo);
+			
 		} catch (Exception e) {
-			log.error("TODO追加でエラー",e);
+
+			log.error("TODO追加でエラー", e);
 		}
-		
-		
+
 		return "redirect:/";
 	}
+	
+	//例外処理
+	@ExceptionHandler(Exception.class)
+	@GetMapping("/adds")
+	public String dataAccessExceptionHondler(Exception e, Model model) {
+
+		model.addAttribute("message", "ありがとう");
+		
+		return "todo/error";
+		
+	}
+	
 
 	// 詳細画面の表示
 	@GetMapping("/detail/{id}")
 	public String getdetail(TodoDetailForm form, Model model,
 			@PathVariable("id") int id) {
-        
+
 		//1件取得
 		Todo todo = todoService.getTodoDetail(id);
 
@@ -88,13 +98,13 @@ public class TodoContoller {
 
 		return "todo/detail";
 	}
-	
+
 	// 削除
-	@PostMapping(value ="/", params="delete")
+	@PostMapping(value = "/", params = "delete")
 	public String deleteTodo(TodoDetailForm form, Model model) {
-		
+
 		todoService.deteleTodos(form.getId());
-		
+
 		return "redirect:/";
 	}
 
