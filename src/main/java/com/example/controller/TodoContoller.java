@@ -56,18 +56,20 @@ public class TodoContoller {
 	@PostMapping("/add")
 	public String postAdd(Model model, Locale locale, @ModelAttribute @Validated AddForm form,
 			BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			return getAdd(model, locale, form);
-		}
 
+		if(bindingResult.hasErrors()) {
+			return getAdd(model,locale,form);
+		}
+		
 		Todo todo = modelMapper.map(form, Todo.class);
+
 		try {
 
 			todoService.getAdditionTodos(todo);
-
 		} catch (DuplicateKeyException e) {
+
 			model.addAttribute("message", "タイトルが重複しています");
-			return getAdd(model, locale, form);
+			return getAdd(model,locale,form);
 		}
 
 		return "redirect:/";
