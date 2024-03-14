@@ -101,6 +101,14 @@ public class TodoContoller {
 
 		return "redirect:/";
 	}
+	
+	@PostMapping(value = "/todo/detail", params = "update")
+	public String todoUpdate(@ModelAttribute TodoDetailForm form, Model model) {
+
+		todoService.todoUpdate(form.getId(), form.getTitle(), form.getTimeLimit());
+
+		return "redirect:/";
+	}
 
 	// TODOの追加
 	//	@PostMapping("/add")

@@ -1,5 +1,6 @@
 package com.example.domain.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,11 @@ public class TodoServiceimpl implements TodoService {
 	public void deteleTodos(String id) {
 		mapper.deteleTodos(id);
 	}
+	
+	@Override
+	public void todoUpdate(String id, String title,Date timeLimit) {
+		mapper.todoUpdate(id,title,timeLimit);
+	}
 
+	
 }
