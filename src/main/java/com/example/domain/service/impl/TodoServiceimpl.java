@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.model.Todo;
 import com.example.domain.service.TodoService;
@@ -25,10 +26,11 @@ public class TodoServiceimpl implements TodoService {
 		return mapper.getTrueTodos();
 	}
 	
-//	@Override
-//	public void getAddTodos(Todo todo) {
-//		mapper.getAdditionTodos(todo);
-//	}
+	@Transactional
+	@Override
+	public void getAdditionTodos(Todo todo) {
+		mapper.getAdditionTodos(todo);
+	}
 	
 	@Override
     public Todo getTodoDetail(int id) {
