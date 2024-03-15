@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.model.Todo;
@@ -44,7 +45,7 @@ public class TodoContoller {
 		return "todo/add";
 	}
 
-	// 
+	// 詳細画面の表示
 	@GetMapping("/detail/{id}")
 	public String getdetail(TodoDetailForm form, Model model,
 			@PathVariable("id") int id) {
@@ -59,6 +60,15 @@ public class TodoContoller {
 		model.addAttribute("todoDetailForm", form);
 
 		return "todo/detail";
+	}
+	
+	// 削除
+	@PostMapping(value ="/", params="delete")
+	public String deleteTodo(TodoDetailForm form, Model model) {
+		
+		todoService.deteleTodos(form.getId());
+		
+		return "redirect:/";
 	}
 
 	// TODOの追加

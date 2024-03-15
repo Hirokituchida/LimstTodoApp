@@ -1,6 +1,10 @@
-.formlogin{
+.text-center{
 	width:100%;
-	max-width:330px;
+	max-width:550px;
 	padding:15px;
 	margin:auto;
+}
+
+.h2 {
+	font-size: x-large;
 }
