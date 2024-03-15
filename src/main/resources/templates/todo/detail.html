@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -15,18 +15,18 @@
 </head>
 
 <body class="bg-light">
-	<form id="signup-form" method="post" action="/todo/add" class="form-add">
+	<form id="todo-detail-form" method="post" th:action="@{/todo/detail}" class="form-detail" th:object="${todoDetailForm}">
 		<h1 class="text-center">TodoDetail</h1>
 		<!-- ID -->
 		<dev class="text-center">
 			<div class="form-group">
 				<label for="titel">タイトル</label>
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" th:field="*{title}"/>
 			</div>
 			<!-- timeLimit -->
 			<div class="form-group">
 				<label for="timeLimit">期限</label>
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" th:field="*{timeLimit}"/>
 			</div>
 			<!-- 完了 -->
 			<div>

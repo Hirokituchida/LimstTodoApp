@@ -25,9 +25,13 @@ public class TodoServiceimpl implements TodoService {
 		return mapper.getTrueTodos();
 	}
 	
-	@Override
-	public void getAddTodos(Todo todo) {
-		mapper.getAdditionTodos(todo);
-	}
+//	@Override
+//	public void getAddTodos(Todo todo) {
+//		mapper.getAdditionTodos(todo);
+//	}
 	
+	@Override
+    public Todo getTodoDetail(int id) {
+		return mapper.getTodoDateil(id);
+	}
 }

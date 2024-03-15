@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.model.Todo;
 import com.example.domain.service.TodoService;
+import com.example.form.TodoDetailForm;
 
 import groovy.util.logging.Slf4j;
 
@@ -41,10 +43,21 @@ public class TodoContoller {
 	public String getAdd(Model model) {
 		return "todo/add";
 	}
-	
+
 	// 
-	@GetMapping("/{id}")
-	public String getdetail() {
+	@GetMapping("/detail/{id}")
+	public String getdetail(TodoDetailForm form, Model model,
+			@PathVariable("id") int id) {
+        
+		//1件取得
+		Todo todo = todoService.getTodoDetail(id);
+
+		//Todoをformに変換
+		form = modelMapper.map(todo, TodoDetailForm.class);
+
+		//Modelに登録
+		model.addAttribute("todoDetailForm", form);
+
 		return "todo/detail";
 	}
 
