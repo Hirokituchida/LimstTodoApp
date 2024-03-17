@@ -15,15 +15,17 @@
 </head>
 
 <body class="bg-light">
-	<form id="todo-detail-form" method="post" th:action="@{/todo/detail}" class="form-detail"
+	<form id="todo-detail-form" method="post" th:action="@{/}" class="form-detail"
 		th:object="${todoDetailForm}">
 		<input type="hidden" th:field="*{id}" />
 		<h1 class="text-center">TodoDetail</h1>
-		<!-- ID -->
+		<!-- title -->
 		<dev class="text-center">
 			<div class="form-group">
 				<label for="titel">タイトル</label>
-				<input type="text" class="form-control" th:field="*{title}" />
+				<input type="text" class="form-control" th:field="*{title}" th:errorclass="is-invalid"/>
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+					<p th:text="${message}"　style= "color: red;"></p>
 			</div>
 			<!-- timeLimit -->
 			<div class="form-group">
