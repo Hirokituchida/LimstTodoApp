@@ -78,8 +78,8 @@ public class TodoContoller {
 
 	// 詳細画面の表示
 	@GetMapping("/detail/{id}")
-	public String getdetail(Model model, TodoDetailForm form,
-			@PathVariable("id") int id, Locale locale) {
+	public String getdetail(TodoDetailForm form, Model model,
+			@PathVariable("id") int id) {
 
 		//1件取得
 		Todo todo = todoService.getTodoDetail(id);
@@ -102,23 +102,10 @@ public class TodoContoller {
 		return "redirect:/";
 	}
 	
-	//更新
-	@PostMapping(value = "/", params = "update")
-	public String todoUpdate(Model model, @ModelAttribute @Validated TodoDetailForm form, BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()) {
-			return  getdetail(model,form,locale);
-		}
-		try {
+	@PostMapping(value = "/todo/detail", params = "update")
+	public String todoUpdate(@ModelAttribute TodoDetailForm form, Model model) {
 
 		todoService.todoUpdate(form.getId(), form.getTitle(), form.getTimeLimit());
-		
-		} catch (DuplicateKeyException e) {
-
-			model.addAttribute("message", "タイトルが重複しています");
-			return getdetail(model,form,locale);
-		}
-		
 
 		return "redirect:/";
 	}
