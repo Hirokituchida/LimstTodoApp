@@ -23,12 +23,13 @@
 				<label for="titel">タイトル</label>
 				<input type="text" class="form-control" th:field="*{title}" th:errorclass="is-invalid" />
 				<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
-					<p th:text="${message}"　style= "color: red;"></p>
+					<p th:text="${message}" style= "color: red;"></p>
 			</div>
 			<!-- timeLimit -->
 			<div class="form-group">
 				<label for="timeLimit">期限</label>
-				<input type="date" class="form-control" th:field="*{timeLimit}" />
+				<input type="date" class="form-control" th:field="*{timeLimit}" th:errorclass="is-invalid"/>
+				<div class="invalid-feedback" th:errors="*{timeLimit}"></div>
 			</div>
 			<!-- 完了 -->
 			<div>

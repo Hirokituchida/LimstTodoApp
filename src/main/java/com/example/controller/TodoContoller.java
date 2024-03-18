@@ -78,7 +78,7 @@ public class TodoContoller {
 
 	// 詳細画面の表示
 	@GetMapping("/detail/{id}")
-	public String getdetail(TodoDetailForm form, Model model,
+	public String getdetail(Model model, TodoDetailForm form,
 			@PathVariable("id") int id) {
 
 		//1件取得
@@ -102,10 +102,16 @@ public class TodoContoller {
 		return "redirect:/";
 	}
 	
-	@PostMapping(value = "/todo/detail", params = "update")
-	public String todoUpdate(@ModelAttribute TodoDetailForm form, Model model) {
-
+	//更新
+	@PostMapping(value = "/", params = "update")
+	public String todoUpdate(Model model, @ModelAttribute @Validated TodoDetailForm form, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return todoUpdate(model,form);
+		}
+		
 		todoService.todoUpdate(form.getId(), form.getTitle(), form.getTimeLimit());
+		
 
 		return "redirect:/";
 	}
