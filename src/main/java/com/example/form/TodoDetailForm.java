@@ -21,7 +21,7 @@ public class TodoDetailForm {
 	private String title;
 	private boolean Done;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@NotNull
 	private Date timeLimit;
 

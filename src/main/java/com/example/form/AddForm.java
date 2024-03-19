@@ -22,7 +22,7 @@ public class AddForm {
 	private boolean Done;
 	
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date timeLimit;
 
 

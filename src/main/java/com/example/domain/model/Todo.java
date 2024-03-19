@@ -16,6 +16,6 @@ public class Todo {
 	private String title;
 	private boolean Done;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date timeLimit;
 }
