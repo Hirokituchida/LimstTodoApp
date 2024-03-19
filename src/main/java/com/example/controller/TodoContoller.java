@@ -109,8 +109,16 @@ public class TodoContoller {
 		if(bindingResult.hasErrors()) {
 			return "todo/detail";
 		}
-		
-		todoService.todoUpdate(form.getId(), form.getTitle(), form.getTimeLimit());
+				
+		try {
+
+			todoService.todoUpdate(form.getId(), form.getTitle(), form.getTimeLimit());
+
+		} catch (DuplicateKeyException e) {
+
+			model.addAttribute("message", "タイトルが重複しています");
+			return "todo/detail";
+		}
 		
 
 		return "redirect:/";
