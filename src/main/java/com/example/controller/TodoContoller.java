@@ -104,10 +104,10 @@ public class TodoContoller {
 	
 	//更新
 	@PostMapping(value = "/", params = "update")
-	public String todoUpdate(Model model, @ModelAttribute @Validated TodoDetailForm form, BindingResult bindingResult) {
+	public String todoUpdate(Model model,  @Validated @ModelAttribute TodoDetailForm form, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
-			return todoUpdate(model,form);
+			return "todo/detail";
 		}
 		
 		todoService.todoUpdate(form.getId(), form.getTitle(), form.getTimeLimit());
