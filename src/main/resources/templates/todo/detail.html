@@ -15,25 +15,35 @@
 </head>
 
 <body class="bg-light">
-	<form id="todo-detail-form" method="post" th:action="@{/todo/detail}" class="form-detail" th:object="${todoDetailForm}">
+	<form id="todo-detail-form" method="post" th:action="@{/}" class="form-detail"
+		th:object="${todoDetailForm}">
+		<input type="hidden" th:field="*{id}" />
 		<h1 class="text-center">TodoDetail</h1>
-		<!-- ID -->
-		<dev class="text-center">
+		<!-- title -->
+		<div class="text-center">
 			<div class="form-group">
 				<label for="titel">タイトル</label>
-				<input type="text" class="form-control" th:field="*{title}"/>
+				<input type="text" class="form-control" th:field="*{title}" th:errorclass="is-invalid"/>
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+					<p th:text="${message}"　style= "color: red;"></p>
 			</div>
 			<!-- timeLimit -->
 			<div class="form-group">
 				<label for="timeLimit">期限</label>
-				<input type="date" class="form-control" th:field="*{timeLimit}"/>
+				<input type="text" class="form-control" placeholder="yyyy/MM/dd" th:field="*{timeLimit}" th:errorclass="is-invalid"/>
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('timeLimit')}" th:errors="*{timeLimit}"></div>
 			</div>
 			<!-- 完了 -->
 			<div>
 				<input type="checkbox" name="done" value="Done" /> 完了フラグ
 			</div>
-		</dev>
-		<!-- 登録ボタン -->
-		<input type="submit" th:value="更新" class="btn btn-primary w-100 mt-3" />
+		</div>
+		<!-- 更新ボタン -->
+		<div class="text-center">
+			<button class="btn btn-primary" type="submit" name="update">
+				更新
+			</button>
+		</div >
+
 	</form>
 </body>

@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -19,4 +20,7 @@ public interface TodoMapper {
 	public Todo getTodoDateil(int id);
 	
 	public int deteleTodos(@Param("id") String id);
+	
+	public int todoUpdate(@Param("id") String id, @Param("title") String title, @Param("timeLimit") Date timeLimit);
+
 }

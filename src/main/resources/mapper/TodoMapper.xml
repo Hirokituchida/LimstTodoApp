@@ -65,4 +65,15 @@
 		is_done = true
 	</delete>
 
+	<!-- 更新 -->
+	<update id="todoUpdate">
+		update
+		todo_details
+		set
+		title = #{title}
+		,time_limit = #{timeLimit}
+		where
+		id = #{id}
+	</update>
+
 </mapper>

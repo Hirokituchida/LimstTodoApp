@@ -21,8 +21,8 @@ public class AddForm {
 	private String title;
 	private boolean Done;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date timeLimit;
 
 

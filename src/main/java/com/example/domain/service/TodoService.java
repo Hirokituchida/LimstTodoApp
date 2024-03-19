@@ -1,5 +1,6 @@
 package com.example.domain.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +19,8 @@ public interface TodoService {
     public Todo getTodoDetail(int id);
 
 	public void deteleTodos(String id);
+	
+	public void todoUpdate(String id, String title, Date timeLimit);
+
 
 }
